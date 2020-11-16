@@ -9,7 +9,7 @@ public class JuegoAhorcado {
 			vFallos[i]="_ ";
 		}
 		for(int i=0; i<vPalabrasecreta.length;i++) {
-			
+			vPala
 		}
 		
 	}
@@ -38,7 +38,9 @@ public class JuegoAhorcado {
 			System.out.println("|");
 	        System.out.println("|");	
 			System.out.println("|______________________");
-		
+			for (int i = 0; i<vFallos.length,i++) {
+				vFallos[i]="_ ";
+			}
 	
 			break;
 		case 4:
@@ -50,7 +52,9 @@ public class JuegoAhorcado {
 			System.out.println("|");
 			System.out.println("|");
 			System.out.println("|");
-			System.out.println("|");
+			System.out.println("|");for (int i = 0; i<vFallos.length,i++) {
+				vFallos[i]="_ ";
+			}
 			System.out.println("|");
 			System.out.println("|");
 	        System.out.println("|");	
