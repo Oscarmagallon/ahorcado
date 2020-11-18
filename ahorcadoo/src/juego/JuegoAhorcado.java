@@ -3,16 +3,18 @@ package juego;
 import java.util.Scanner;
 
 public class JuegoAhorcado {
+
 	public static boolean heGanado(String vAciertos[]) {
-		boolean ganar=false;
-		for (int i = 0;i<vAciertos.length;i++) {
-			if (!vAciertos[i].equals(" _ ")) {
-				ganar=true;
+		boolean ganar = true;
+		for (int i = 0; i < vAciertos.length; i++) {
+			if (vAciertos[i].equals(" _ ")) {
+				ganar = false;
+				break;
 			}
 		}
-		
-		return  ganar;
-		
+
+		return ganar;
+
 	}
 
 	public static void iniciarVectores(String palabraSecreta, String vPalabrasecreta[], String vAciertos[],
@@ -75,8 +77,8 @@ public class JuegoAhorcado {
 			System.out.println("|        |_ /| ");
 			System.out.println("|          |");
 			System.out.println("|          |");
-			System.out.println("|		   |");
-			System.out.println("|		   |");
+			System.out.println("|          |");
+			System.out.println("|          |");
 			System.out.println("|			   		");
 			System.out.println("|");
 			System.out.println("|");
@@ -85,38 +87,42 @@ public class JuegoAhorcado {
 
 			break;
 		case 2:
-			System.out.println("_______________");
-			System.out.println("|              _|_");
-			System.out.println("|             | oo|");
-			System.out.println("|             |_ /| ");
-			System.out.println("|               |");
-			System.out.println("|         ______|______");
-			System.out.println("|				|");
-			System.out.println("|				|");
+			System.out.println("__________");
+			System.out.println("|        _|_");
+			System.out.println("|        | oo|");
+			System.out.println("|        |_ /| ");
+			System.out.println("|          |");
+			System.out.println("|     -----|-----");
+			System.out.println("|          |");
+			System.out.println("|          |");
 			System.out.println("|			   		");
 			System.out.println("|");
 			System.out.println("|");
 			System.out.println("|");
 			System.out.println("|______________");
 
+
 			break;
 		case 1:
-			System.out.println("_______________");
-			System.out.println("|              _|_");
-			System.out.println("|             | oo|");
-			System.out.println("|             |_ /| ");
-			System.out.println("|               |");
-			System.out.println("|         ______|_____");
-			System.out.println("|				|");
-			System.out.println("|			    |");
-			System.out.println("|			   /|  	");
-			System.out.println("|             / |  ");
-			System.out.println("|");
-			System.out.println("|");
+			System.out.println("__________");
+			System.out.println("|        _|_");
+			System.out.println("|        | oo|");
+			System.out.println("|        |_ /| ");
+			System.out.println("|          |");
+			System.out.println("|     -----|-----");
+			System.out.println("|          |");
+			System.out.println("|          |");
+			System.out.println("|        /   \\");
+			System.out.println("|       /     \\");
+			System.out.println("|      /       \\");
+			System.out.println("|     /         \\");
 			System.out.println("|______________");
 
-			break;
 
+			break;
+		case 0:
+
+			break;
 		}
 	}
 
@@ -150,14 +156,17 @@ public class JuegoAhorcado {
 		// Imprimir fallos
 		System.out.println("Fallos cometidos");
 		for (int i = 0; i < vFallos.length; i++) {
+
 			if (!vFallos[i].equals(" _ ")) {
-				System.out.println(vFallos[i] + " ");
+				System.out.print(vFallos[i] + " ");
 
 			}
 		}
+		System.out.println("\nAciertos");
 		for (int i = 0; i < vAciertos.length; i++) {
-			System.out.println(vAciertos[i] + " ");
+			System.out.print(vAciertos[i] + " ");
 		}
+		System.out.println("");
 	}
 
 	public static void main(String[] args) {
@@ -178,15 +187,13 @@ public class JuegoAhorcado {
 			System.out.println("Dime una letra para adivinar la palbra");
 			letra = leer.next();
 			// 2º Comprobar si esta en la palabra
-			comprobarLetraIntroducida(vidas, palabraSecreta, letra, vPalabrasecreta, vAciertos, vFallos);
+			vidas = comprobarLetraIntroducida(vidas, palabraSecreta, letra, vPalabrasecreta, vAciertos, vFallos);
 			// 3º Dibujamos muñejo
 			dibujarMuneco(vidas);
 			// 4º Dibujar aciertos y errores
 			dibujarAciertosErrores(vFallos, vAciertos);
-			
-			heGanado(vAciertos);
 
-		} while (vidas >= 0 && heGanado(vAciertos)==false);
+		} while (vidas > 0 && heGanado(vAciertos) == false);
 
 	}
 
