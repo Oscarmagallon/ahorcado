@@ -183,8 +183,10 @@ public class JuegoAhorcado {
 			dibujarMuneco(vidas);
 			// 4º Dibujar aciertos y errores
 			dibujarAciertosErrores(vFallos, vAciertos);
+			
+			heGanado(vAciertos);
 
-		} while (vidas >= 0 && heGanado()==false);
+		} while (vidas >= 0 && heGanado(vAciertos)==false);
 
 	}
 
