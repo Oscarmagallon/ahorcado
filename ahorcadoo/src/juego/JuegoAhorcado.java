@@ -3,13 +3,25 @@ package juego;
 import java.util.Scanner;
 
 public class JuegoAhorcado {
+	public static boolean heGanado(String vAciertos[]) {
+		boolean ganar=false;
+		for (int i = 0;i<vAciertos.length;i++) {
+			if (!vAciertos[i].equals(" _ ")) {
+				ganar=true;
+			}
+		}
+		
+		return  ganar;
+		
+	}
 
-	public static void iniciarVectores(String palabra, String vPalabrasecreta[], String vAciertos[], String vFallos[]) {
+	public static void iniciarVectores(String palabraSecreta, String vPalabrasecreta[], String vAciertos[],
+			String vFallos[]) {
 		for (int i = 0; i < vFallos.length; i++) {
 			vFallos[i] = " _ ";
 		}
 		for (int i = 0; i < vPalabrasecreta.length; i++) {
-			vPalabrasecreta[i] = palabra.substring(i, i + 1);
+			vPalabrasecreta[i] = palabraSecreta.substring(i, i + 1);
 			vAciertos[i] = " _ ";
 		}
 
@@ -108,9 +120,30 @@ public class JuegoAhorcado {
 		}
 	}
 
-	public static boolean comprobarLetraPalabra(String palabra, String letra) {
+	public static int comprobarLetraIntroducida(int vidas, String palabraSecreta, String letra,
+			String vPalabrasecreta[], String vAciertos[], String vFallos[]) {
 		boolean encontrado = false;
-		return encontrado;
+		for (int i = 0; i < palabraSecreta.length(); i++) {
+			if (palabraSecreta.substring(i, i + 1).equalsIgnoreCase(letra)) {
+				vAciertos[i] = letra;
+				encontrado = true;
+				// System.out.println(vAciertos[i]);
+			}
+		}
+
+		if (encontrado == false) {
+			// Guardo en la primera posicion libre de vfallos
+			for (int i = 0; i < vFallos.length; i++) {
+				if (vFallos[i].equalsIgnoreCase(" _ ")) {
+
+					vFallos[i] = letra;
+					vidas--;
+					break;
+				}
+			}
+
+		}
+		return vidas;
 	}
 
 	public static void dibujarAciertosErrores(String vFallos[], String vAciertos[]) {
@@ -118,36 +151,40 @@ public class JuegoAhorcado {
 		System.out.println("Fallos cometidos");
 		for (int i = 0; i < vFallos.length; i++) {
 			if (!vFallos[i].equals(" _ ")) {
-				System.out.println(vFallos[i]+" ");
+				System.out.println(vFallos[i] + " ");
 
 			}
 		}
-		
+		for (int i = 0; i < vAciertos.length; i++) {
+			System.out.println(vAciertos[i] + " ");
+		}
 	}
-
-	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		// vidad totales 7
+		// vidas totales 7
 		int vidas = 7;
+		boolean encontrado;
 		String letra = "", palabraSecreta = "oscar";
 		Scanner leer = new Scanner(System.in);
 		String vPalabrasecreta[], vAciertos[], vFallos[];
 		vPalabrasecreta = new String[palabraSecreta.length()];
 		vAciertos = new String[palabraSecreta.length()];
 		vFallos = new String[vidas];
+		iniciarVectores(palabraSecreta, vPalabrasecreta, vAciertos, vFallos);
 		// estructura
 		do {
 			// 1º Preguntar la letra
 			System.out.println("Dime una letra para adivinar la palbra");
-			letra=leer.next();
+			letra = leer.next();
 			// 2º Comprobar si esta en la palabra
+			comprobarLetraIntroducida(vidas, palabraSecreta, letra, vPalabrasecreta, vAciertos, vFallos);
 			// 3º Dibujamos muñejo
 			dibujarMuneco(vidas);
 			// 4º Dibujar aciertos y errores
-			vidas--;
-		} while (vidas >= 0);
+			dibujarAciertosErrores(vFallos, vAciertos);
+
+		} while (vidas >= 0 && heGanado()==false);
 
 	}
 
