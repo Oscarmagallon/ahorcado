@@ -31,9 +31,7 @@ public class JuegoAhorcado {
 
 	public static void dibujarMuneco(int vidas) {
 		switch (vidas) {
-		case 7:
-			System.out.println("");
-			break;
+		
 		case 6:
 			System.out.println("______________________");
 
@@ -120,9 +118,7 @@ public class JuegoAhorcado {
 
 
 			break;
-		case 0:
-
-			break;
+		
 		}
 	}
 
@@ -193,8 +189,9 @@ public class JuegoAhorcado {
 			// 4º Dibujar aciertos y errores
 			dibujarAciertosErrores(vFallos, vAciertos);
 
-		} while (vidas > 0 && heGanado(vAciertos) == false);
+		} while (vidas >1  && heGanado(vAciertos) == false);
 
+		
 	}
 
 }
