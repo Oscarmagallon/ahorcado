@@ -206,7 +206,7 @@ public class JuegoAhorcado {
 					System.out.println("|      /       \\");
 					System.out.println("|     /         \\");
 					System.out.println("|______________");
-					System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n");
+					System.out.println("n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
 				} else {
 					System.out.println("__________");
@@ -222,7 +222,7 @@ public class JuegoAhorcado {
 					System.out.println("|      /       \\");
 					System.out.println("|     /         \\");
 					System.out.println("|______________");
-					System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n");
+					System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
 				}
 
